@@ -39,14 +39,6 @@
 /** `TKCalendarMonthView` imitates the month grid in the Calendar app on iPhone. */
 @interface TKCalendarMonthView : UIView
 
-@property (nonatomic,strong) UIView *tileBox;
-@property (nonatomic,strong) UIView *topBackground;
-@property (nonatomic,strong) UILabel *monthYear;
-@property (nonatomic,strong) UIButton *leftArrow;
-@property (nonatomic,strong) UIButton *rightArrow;
-@property (nonatomic,strong) UIView *shadow;
-@property (nonatomic,strong) UIView *dropshadow;
-
 /** Initialize a Calendar Month Grid.
  @param timeZone The time zone of the grid,
  @return A `TKCalendarMonthView` object or nil.

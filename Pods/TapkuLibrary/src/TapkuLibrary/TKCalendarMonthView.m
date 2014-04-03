@@ -304,8 +304,13 @@ static UIImage *tileImage;
     [str drawInRect:r withAttributes:attributes];
 
 	
+//	[str drawInRect: r
+//		   withFont: f1
+//	  lineBreakMode: NSLineBreakByWordWrapping
+//		  alignment: NSTextAlignmentCenter];
+	
 	if(mark){
-		r.size.height = 10;
+		r.size.height = 15;
 		r.origin.y += 19;
         
         /// Make a copy of the default paragraph style
@@ -321,6 +326,10 @@ static UIImage *tileImage;
         
         [@"•" drawInRect:r withAttributes:attributes];
 
+//		[@"•" drawInRect: r
+//				withFont: f2
+//		   lineBreakMode: NSLineBreakByWordWrapping 
+//			   alignment: NSTextAlignmentCenter];
 	}
 	
 
@@ -339,8 +348,8 @@ static UIImage *tileImage;
 		NSInteger pre = firstOfPrev > 0 ? lastOfPrev - firstOfPrev + 1 : 0;
 		NSInteger index = today +  pre-1;
 		CGRect r = [self rectForCellAtIndex:index];
-		r.origin.y -= 6;
-		[[UIImage imageWithContentsOfFile:TKBUNDLE(@"calendar/Month Calendar Today Tile.png")] drawInRect:r];
+		r.origin.y -= 7;
+		[[UIImage imageWithContentsOfFile:TKBUNDLE(@"calendar/Month Calendar Date Tile.png")] drawInRect:r];
 	}
 	
 	CGFloat myColorValues[] = {1, 1, 1, .8};
@@ -654,13 +663,13 @@ static UIImage *tileImage;
 @property (nonatomic,strong) TKCalendarMonthTiles *currentTile;
 @property (nonatomic,strong) TKCalendarMonthTiles *oldTile;
 @property (nonatomic,assign) BOOL sunday;
-//@property (nonatomic,strong) UIView *tileBox;
-//@property (nonatomic,strong) UIView *topBackground;
-//@property (nonatomic,strong) UILabel *monthYear;
-//@property (nonatomic,strong) UIButton *leftArrow;
-//@property (nonatomic,strong) UIButton *rightArrow;
-//@property (nonatomic,strong) UIView *shadow;
-//@property (nonatomic,strong) UIView *dropshadow;
+@property (nonatomic,strong) UIView *tileBox;
+@property (nonatomic,strong) UIView *topBackground;
+@property (nonatomic,strong) UILabel *monthYear;
+@property (nonatomic,strong) UIButton *leftArrow;
+@property (nonatomic,strong) UIButton *rightArrow;
+@property (nonatomic,strong) UIView *shadow;
+@property (nonatomic,strong) UIView *dropshadow;
 
 @end
 
@@ -680,13 +689,13 @@ static UIImage *tileImage;
 	self.timeZone = timeZone;
 	self.sunday = s;
 	
-	[self addSubview:self.dropshadow];
+	//[self addSubview:self.dropshadow];
 	[self addSubview:self.topBackground];
 	[self addSubview:self.leftArrow];
 	[self addSubview:self.rightArrow];
 	[self addSubview:self.tileBox];
 	[self addSubview:self.monthYear];
-	[self addSubview:self.shadow];
+	//[self addSubview:self.shadow];
 
 	NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
 	dateFormat.dateFormat = @"eee";
@@ -1028,8 +1037,8 @@ static UIImage *tileImage;
 	if(_shadow) return _shadow;
 	
 	TKGradientView *grad  = [[TKGradientView alloc] initWithFrame:CGRectMake(0, 0, 100, self.frame.size.width)];
-	grad.colors = @[[UIColor colorWithWhite:0 alpha:0],[UIColor colorWithWhite:0 alpha:0.0],[UIColor colorWithWhite:0 alpha:0.1]];
-	_shadow = grad;
+	//grad.colors = @[[UIColor colorWithWhite:0 alpha:0],[UIColor colorWithWhite:0 alpha:0.0],[UIColor colorWithWhite:0 alpha:0.1]];
+	//_shadow = grad;
 	_shadow.userInteractionEnabled = NO;
 	return _shadow;
 }
@@ -1038,8 +1047,8 @@ static UIImage *tileImage;
 	
 	TKGradientView *grad  = [[TKGradientView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 10)];
 	grad.backgroundColor = [UIColor clearColor];
-	grad.colors = @[[UIColor colorWithWhite:0 alpha:0.3],[UIColor colorWithWhite:0 alpha:0.0]];
-	_dropshadow = grad;
+	//grad.colors = @[[UIColor colorWithWhite:0 alpha:0.3],[UIColor colorWithWhite:0 alpha:0.0]];
+	//_dropshadow = grad;
 	_dropshadow.userInteractionEnabled = NO;
 	return _dropshadow;
 }

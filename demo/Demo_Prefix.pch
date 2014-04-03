@@ -1,9 +1,0 @@
-//
-// Prefix header for all source files of the 'universaldemo' target in the 'universal demo' project
-//
-
-#ifdef __OBJC__
-	@import Foundation;
-    @import UIKit;
-	#import <TapkuLibrary/TapkuLibrary.h>
-#endif
