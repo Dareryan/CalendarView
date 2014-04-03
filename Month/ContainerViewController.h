@@ -13,4 +13,6 @@
 
 @property (strong, nonatomic) TKCalendarMonthView *calendar;
 
+@property (strong, nonatomic) NSDate *selectedDate;
+
 @end

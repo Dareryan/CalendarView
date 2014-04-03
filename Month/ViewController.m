@@ -8,7 +8,9 @@
 
 #import "ViewController.h"
 
+
 @interface ViewController ()
+
 
 @end
 
@@ -16,6 +18,9 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    
+    [super viewWillAppear:animated];
+
     
 }
 

@@ -8,34 +8,32 @@
 
 #import "ContainerViewController.h"
 #import <TKInputView.h>
+#import "EventDataStore.h"
+#import "Event.h"
 
 @interface ContainerViewController ()
+
+@property (strong, nonatomic) EventDataStore *dataStore;
+
 
 @end
 
 @implementation ContainerViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    self.dataStore = [EventDataStore sharedDataStore];
+    
     self.calendar = [[TKCalendarMonthView alloc] init];
     self.calendar.delegate = self;
     self.calendar.dataSource = self;
     
-    NSLog(@"%f %f", self.calendar.frame.size.width, self.calendar.frame.size.height);
-    
     [self.view addSubview:self.calendar];
-   
-       
+    
 }
 
 - (void)viewDidLoad
@@ -54,6 +52,7 @@
 
 - (void)calendarMonthView:(TKCalendarMonthView *)monthView didSelectDate:(NSDate *)d {
 	NSLog(@"calendarMonthView didSelectDate %@", d);
+    self.selectedDate = d;
 }
 
 - (void)calendarMonthView:(TKCalendarMonthView *)monthView monthDidChange:(NSDate *)d {
@@ -68,16 +67,23 @@
 	NSLog(@"Make sure to update 'data' variable to pull from CoreData, website, User Defaults, or some other source.");
 	// When testing initially you will have to update the dates in this array so they are visible at the
 	// time frame you are testing the code.
-	NSArray *data = [NSArray arrayWithObjects:
-					 @"2014-04-09 04:00:00 +0000", @"2011-01-09 00:00:00 +0000", @"2011-01-22 00:00:00 +0000",
-					 @"2014-05-01 04:00:00 +0000", @"2011-01-11 00:00:00 +0000", @"2011-01-12 00:00:00 +0000",
-					 @"2014-04-15 04:00:00 +0000", @"2011-01-28 00:00:00 +0000", @"2011-01-04 00:00:00 +0000",
-					 @"2014-04-16 04:00:00 +0000", @"2011-01-18 00:00:00 +0000", @"2011-01-19 00:00:00 +0000",
-					 @"2011-01-23 00:00:00 +0000", @"2011-01-24 00:00:00 +0000", @"2011-01-25 00:00:00 +0000",
-					 @"2011-02-01 00:00:00 +0000", @"2011-03-01 00:00:00 +0000", @"2011-04-01 00:00:00 +0000",
-					 @"2011-05-01 00:00:00 +0000", @"2011-06-01 00:00:00 +0000", @"2011-07-01 00:00:00 +0000",
-					 @"2011-08-01 00:00:00 +0000", @"2011-09-01 00:00:00 +0000", @"2011-10-01 00:00:00 +0000",
-					 @"2011-11-01 00:00:00 +0000", @"2011-12-01 00:00:00 +0000", nil];
+    
+    NSMutableArray *data = [[NSMutableArray alloc]init];
+    
+    for (Event *event in self.dataStore.events) {
+        [data addObject:event.date];
+    }
+    
+//	NSArray *data = [NSArray arrayWithObjects:
+//					 @"2014-04-09 04:00:00 +0000", @"2011-01-09 00:00:00 +0000", @"2011-01-22 00:00:00 +0000",
+//					 @"2014-05-01 04:00:00 +0000", @"2011-01-11 00:00:00 +0000", @"2011-01-12 00:00:00 +0000",
+//					 @"2014-04-15 04:00:00 +0000", @"2011-01-28 00:00:00 +0000", @"2011-01-04 00:00:00 +0000",
+//					 @"2014-04-16 04:00:00 +0000", @"2011-01-18 00:00:00 +0000", @"2011-01-19 00:00:00 +0000",
+//					 @"2011-01-23 00:00:00 +0000", @"2011-01-24 00:00:00 +0000", @"2011-01-25 00:00:00 +0000",
+//					 @"2011-02-01 00:00:00 +0000", @"2011-03-01 00:00:00 +0000", @"2011-04-01 00:00:00 +0000",
+//					 @"2011-05-01 00:00:00 +0000", @"2011-06-01 00:00:00 +0000", @"2011-07-01 00:00:00 +0000",
+//					 @"2011-08-01 00:00:00 +0000", @"2011-09-01 00:00:00 +0000", @"2011-10-01 00:00:00 +0000",
+//					 @"2011-11-01 00:00:00 +0000", @"2011-12-01 00:00:00 +0000", nil];
 	
     
 	// Initialise empty marks array, this will be populated with TRUE/FALSE in order for each day a marker should be placed on.
@@ -94,6 +100,7 @@
 	NSDateComponents *comp = [cal components:(NSCalendarUnitMonth | NSCalendarUnitMinute| NSCalendarUnitYear |
                                               NSCalendarUnitDay | NSCalendarUnitWeekday | NSCalendarUnitHour | NSCalendarUnitSecond)
                                     fromDate:startDate];
+    
 	NSDate *d = [cal dateFromComponents:comp];
 	
 	// Init offset components to increment days in the loop by one each time
