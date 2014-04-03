@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		057526BA18EDE8C600466CCB /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 057526B918EDE8C600466CCB /* TableViewController.m */; };
 		057BD29318EC680400FCC3A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 057BD29218EC680400FCC3A1 /* Foundation.framework */; };
 		057BD29518EC680400FCC3A1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 057BD29418EC680400FCC3A1 /* CoreGraphics.framework */; };
 		057BD29718EC680400FCC3A1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 057BD29618EC680400FCC3A1 /* UIKit.framework */; };
@@ -37,6 +38,8 @@
 
 /* Begin PBXFileReference section */
 		02BAA86E501E4386B3EAF69E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		057526B818EDE8C600466CCB /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		057526B918EDE8C600466CCB /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		057BD28F18EC680400FCC3A1 /* Month.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Month.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		057BD29218EC680400FCC3A1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		057BD29418EC680400FCC3A1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -124,6 +127,8 @@
 				057BD2A118EC680400FCC3A1 /* AppDelegate.h */,
 				057BD2A218EC680400FCC3A1 /* AppDelegate.m */,
 				057BD2A418EC680400FCC3A1 /* Main.storyboard */,
+				057526B818EDE8C600466CCB /* TableViewController.h */,
+				057526B918EDE8C600466CCB /* TableViewController.m */,
 				057BD2A718EC680400FCC3A1 /* ViewController.h */,
 				057BD2A818EC680400FCC3A1 /* ViewController.m */,
 				05F6B64518ECC01300E5EE95 /* ContainerViewController.h */,
@@ -298,6 +303,7 @@
 				057BD2A918EC680400FCC3A1 /* ViewController.m in Sources */,
 				057BD2A318EC680400FCC3A1 /* AppDelegate.m in Sources */,
 				05F6B64718ECC01300E5EE95 /* ContainerViewController.m in Sources */,
+				057526BA18EDE8C600466CCB /* TableViewController.m in Sources */,
 				057BD29F18EC680400FCC3A1 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

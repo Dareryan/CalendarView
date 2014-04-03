@@ -384,7 +384,6 @@ static UIImage *tileImage;
 		}
 	}
     
-    
 	
     color = gradientColor;
     

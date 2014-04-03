@@ -31,6 +31,8 @@
     self.calendar.delegate = self;
     self.calendar.dataSource = self;
     
+    NSLog(@"%f %f", self.calendar.frame.size.width, self.calendar.frame.size.height);
+    
     [self.view addSubview:self.calendar];
    
        
