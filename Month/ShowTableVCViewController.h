@@ -11,6 +11,6 @@
 
 @interface ShowTableVCViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet TableView *tableView;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end

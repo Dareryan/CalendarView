@@ -59,7 +59,9 @@
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
-    ShowTableVCViewController *tableViewVC = [storyboard instantiateViewControllerWithIdentifier:@"show"];
+    ShowTableVCViewController *showVC = [storyboard instantiateViewControllerWithIdentifier:@"show"];
+    
+    showVC.tableView = [[TableView alloc]init];
     
     self.dataStore.eventsForCurrentDay = [[NSMutableArray alloc]init];
     
@@ -71,9 +73,9 @@
         }
     }
     
-    NSLog(@"%@", self.dataStore.eventsForCurrentDay);
+    //NSLog(@"%@", self.dataStore.eventsForCurrentDay);
     
-    [tableViewVC.tableView reloadData];
+    [showVC.tableView reloadData];
 }
 
 - (void)calendarMonthView:(TKCalendarMonthView *)monthView monthDidChange:(NSDate *)d {

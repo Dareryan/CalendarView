@@ -31,7 +31,7 @@
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
     
-    [self.tableView reloadData];
+    //[self.tableView reloadData];
 }
 
 
