@@ -9,13 +9,20 @@
 #import "ShowTableVCViewController.h"
 #import "EventDataStore.h"
 
-@interface ShowTableVCViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface ShowTableVCViewController () <UITableViewDataSource, UITableViewDelegate, NSCoding>
 
 @property (strong, nonatomic) EventDataStore *dataStore;
 
 @end
 
 @implementation ShowTableVCViewController
+
+- (void)getTodaysEvents
+{
+    self.dataStore = [EventDataStore sharedDataStore];
+    
+    NSLog(@"%@", self.dataStore.eventsForCurrentDay);
+}
 
 
 - (void)viewDidLoad
@@ -24,14 +31,10 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    
-    self.dataStore = [EventDataStore sharedDataStore];
-    
-    //NSLog(@"%@", self.dataStore.eventsForCurrentDay);
-    
+
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
     
-    //[self.tableView reloadData];
+    [self.tableView reloadData];
 }
 
 

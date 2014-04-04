@@ -26,7 +26,7 @@
     
     [super reloadData];
     
-    NSLog(@"%@", self.dataStore.eventsForCurrentDay);
+    //NSLog(@"%@", self.dataStore.eventsForCurrentDay);
         
     //NSLog(@"%@", self.dataStore.dateString);
     

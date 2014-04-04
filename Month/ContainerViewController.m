@@ -61,6 +61,10 @@
     
     ShowTableVCViewController *showVC = [storyboard instantiateViewControllerWithIdentifier:@"show"];
     
+    
+    
+    NSLog(@"vc instantiated");
+    
     showVC.tableView = [[TableView alloc]init];
     
     self.dataStore.eventsForCurrentDay = [[NSMutableArray alloc]init];
@@ -74,6 +78,8 @@
     }
     
     //NSLog(@"%@", self.dataStore.eventsForCurrentDay);
+    
+    [showVC getTodaysEvents];
     
     [showVC.tableView reloadData];
 }
