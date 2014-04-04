@@ -10,4 +10,9 @@
 
 @implementation Event
 
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"Event: %@ at: %@ with: %@", self.title, self.time, self.visitor];
+}
+
 @end

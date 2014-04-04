@@ -20,22 +20,24 @@
         Event *tea = [[Event alloc]init];
         tea.date = @"2014-04-10 04:00:00 +0000";
         tea.time = @"16.30";
-        tea.visitor = @"Jane Smith";
+        tea.visitor = @"White Rabbit";
         tea.title = @"afternoon tea";
         
         Event *delivery = [[Event alloc]init];
         delivery.date = @"2014-04-10 04:00:00 +0000";
         delivery.time = @"10.00";
-        delivery.visitor = @"delivery boy";
-        delivery.title = @"delivery 10 packs of tea";
+        delivery.visitor = @"Cat in a Hat";
+        delivery.title = @"eat mice";
         
         Event *beer = [[Event alloc]init];
         beer.date =  @"2014-04-11 04:00:00 +0000";
         beer.time = @"all day";
-        beer.visitor = @"Jack Smith";
-        beer.title = @"drinking contest";
+        beer.visitor = @"Green Iguana";
+        beer.title = @"eating leaves";
         
         _events = [NSArray arrayWithObjects: tea, beer, delivery, nil];
+        
+        //_eventsForCurrentDay = [[NSMutableArray alloc]init];
     }
     return self;
 }

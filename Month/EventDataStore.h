@@ -12,6 +12,10 @@
 
 @property (strong, nonatomic) NSArray *events;//of event objects
 
+@property (strong, nonatomic) NSString *dateString;
+
+@property (strong, nonatomic) NSMutableArray *eventsForCurrentDay;
+
 +(EventDataStore *) sharedDataStore;
 
 @end

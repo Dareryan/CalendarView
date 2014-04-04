@@ -10,6 +10,7 @@
 #import <TKInputView.h>
 #import "EventDataStore.h"
 #import "Event.h"
+#import "ShowTableVCViewController.h"
 
 @interface ContainerViewController ()
 
@@ -51,8 +52,28 @@
 #pragma mark - TKCalendarMonthViewDelegate methods
 
 - (void)calendarMonthView:(TKCalendarMonthView *)monthView didSelectDate:(NSDate *)d {
-	NSLog(@"calendarMonthView didSelectDate %@", d);
-    self.selectedDate = d;
+//	NSLog(@"calendarMonthView didSelectDate %@", d);
+    
+    self.dataStore.dateString = [d description];
+    //NSLog(@"%@", self.dataStore.dateString);
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    ShowTableVCViewController *tableViewVC = [storyboard instantiateViewControllerWithIdentifier:@"show"];
+    
+    self.dataStore.eventsForCurrentDay = [[NSMutableArray alloc]init];
+    
+    for (Event *event in self.dataStore.events) {
+        
+        if ([event.date isEqualToString:[d description]])
+        {
+            [self.dataStore.eventsForCurrentDay addObject:event];
+        }
+    }
+    
+    NSLog(@"%@", self.dataStore.eventsForCurrentDay);
+    
+    [tableViewVC.tableView reloadData];
 }
 
 - (void)calendarMonthView:(TKCalendarMonthView *)monthView monthDidChange:(NSDate *)d {
@@ -73,17 +94,6 @@
     for (Event *event in self.dataStore.events) {
         [data addObject:event.date];
     }
-    
-//	NSArray *data = [NSArray arrayWithObjects:
-//					 @"2014-04-09 04:00:00 +0000", @"2011-01-09 00:00:00 +0000", @"2011-01-22 00:00:00 +0000",
-//					 @"2014-05-01 04:00:00 +0000", @"2011-01-11 00:00:00 +0000", @"2011-01-12 00:00:00 +0000",
-//					 @"2014-04-15 04:00:00 +0000", @"2011-01-28 00:00:00 +0000", @"2011-01-04 00:00:00 +0000",
-//					 @"2014-04-16 04:00:00 +0000", @"2011-01-18 00:00:00 +0000", @"2011-01-19 00:00:00 +0000",
-//					 @"2011-01-23 00:00:00 +0000", @"2011-01-24 00:00:00 +0000", @"2011-01-25 00:00:00 +0000",
-//					 @"2011-02-01 00:00:00 +0000", @"2011-03-01 00:00:00 +0000", @"2011-04-01 00:00:00 +0000",
-//					 @"2011-05-01 00:00:00 +0000", @"2011-06-01 00:00:00 +0000", @"2011-07-01 00:00:00 +0000",
-//					 @"2011-08-01 00:00:00 +0000", @"2011-09-01 00:00:00 +0000", @"2011-10-01 00:00:00 +0000",
-//					 @"2011-11-01 00:00:00 +0000", @"2011-12-01 00:00:00 +0000", nil];
 	
     
 	// Initialise empty marks array, this will be populated with TRUE/FALSE in order for each day a marker should be placed on.
